@@ -190,6 +190,12 @@ public class Board
                     }
                     
                 }
+                else if (_board[i, j] == '\u2b50')
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(" " + _board[i,j] + " ");
+                    Console.ResetColor();
+                }
                 else
                 {
                     Console.Write(" " + _board[i,j] + " ");
