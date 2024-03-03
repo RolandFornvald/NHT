@@ -1,3 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿namespace NHT;
 
-Console.WriteLine("Hello, World!");
+public class Program
+{
+    public static void Main()
+    {
+        Board board = new Board();
+        
+        board.CreateBoard();
+        board.PrintBoard();
+    }
+}
+
