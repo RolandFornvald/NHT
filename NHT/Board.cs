@@ -20,57 +20,6 @@ public class Board
                 _board[i, j] = ' ';
             }
         }
-        //Yellow Player
-        {
-            _board[0, 0] = yellow.Symbol;
-            _board[1, 1] = yellow.Symbol;
-            _board[0, 1] = yellow.Symbol;
-            _board[1, 0] = yellow.Symbol;
-            
-            _charBoard[0, 0] = yellow;
-            _charBoard[1, 1] = yellow;
-            _charBoard[0, 1] = yellow;
-            _charBoard[1, 0] = yellow;
-
-        }
-        //Green Player
-        {
-        
-            _board[0, 10] = green.Symbol;
-            _board[1, 9] = green.Symbol;
-            _board[0, 9] = green.Symbol;
-            _board[1, 10] = green.Symbol;
-            
-            _charBoard[0, 10] = green;
-            _charBoard[1, 9] = green;
-            _charBoard[0, 9] = green;
-            _charBoard[1, 10] = green;
-        
-        }
-        //Red Player
-        {
-            _board[10, 10] = red.Symbol;
-            _board[9, 9]   = red.Symbol;
-            _board[9, 10]  = red.Symbol;
-            _board[10, 9]  = red.Symbol;
-            
-            _charBoard[10, 10] = red;
-            _charBoard[9, 9]   = red;
-            _charBoard[9, 10]  = red;
-            _charBoard[10, 9]  = red;
-        }
-        //Blue Player
-        {
-            _board[10, 0] = blue.Symbol;
-            _board[10, 1] = blue.Symbol;
-            _board[9, 1]  = blue.Symbol;
-            _board[9, 0]  = blue.Symbol;
-            
-            _charBoard[10, 0] = blue;
-            _charBoard[10, 1] = blue;
-            _charBoard[9, 1]  = blue;
-            _charBoard[9, 0]  = blue;
-        }
         //first quarter
         {
             for (int i = 0; i < 4; i++)
@@ -153,6 +102,58 @@ public class Board
         _board[6, 4] = '\u2b50';
         _board[4, 6] = '\u2b50';
         _board[6, 6] = '\u2b50';
+        //Yellow Player
+        {
+            _board[0, 0] = yellow.Symbol;
+            _board[1, 1] = yellow.Symbol;
+            _board[4, 0] = yellow.Symbol;
+            _board[1, 0] = yellow.Symbol;
+            
+            _charBoard[0, 0] = yellow;
+            _charBoard[1, 1] = yellow;
+            _charBoard[4, 0] = yellow;
+            _charBoard[1, 0] = yellow;
+
+        }
+        //Green Player
+        {
+        
+            _board[0, 6] = green.Symbol;
+            _board[1, 9] = green.Symbol;
+            _board[0, 9] = green.Symbol;
+            _board[1, 10] = green.Symbol;
+            
+            _charBoard[0, 6] = green;
+            _charBoard[1, 9] = green;
+            _charBoard[0, 9] = green;
+            _charBoard[1, 10] = green;
+        
+        }
+        //Red Player
+        {
+            _board[10, 10] = red.Symbol;
+            _board[9, 9]   = red.Symbol;
+            _board[6, 10]  = red.Symbol;
+            _board[10, 9]  = red.Symbol;
+            
+            _charBoard[10, 10] = red;
+            _charBoard[9, 9]   = red;
+            _charBoard[6, 10]  = red;
+            _charBoard[10, 9]  = red;
+        }
+        //Blue Player
+        {
+            _board[10, 0] = blue.Symbol;
+            _board[10, 1] = blue.Symbol;
+            _board[10, 4]  = blue.Symbol;
+            _board[9, 0]  = blue.Symbol;
+            
+            _charBoard[10, 0] = blue;
+            _charBoard[10, 1] = blue;
+            _charBoard[10, 4]  = blue;
+            _charBoard[9, 0]  = blue;
+        }
+        
     }
 
     public void PrintBoard()
@@ -208,7 +209,84 @@ public class Board
 
     public bool CheckForWinner()
     {
-        
+        int count = 0;
+        for (int i = 1; i < 5; i++)
+        {
+            if (_board[5, i] == yellow.Symbol)
+            {
+                count++;
+            }
+        }
+
+        if (count == 4)
+        {
+            Console.WriteLine("Yellow is the winner!");
+            return true;
+        }
+
+        count = 0;
+        for (int i = 1; i < 5; i++)
+        {
+            if (_board[i, 5] == yellow.Symbol)
+            {
+                count++;
+            }
+        }
+
+        if (count == 4)
+        {
+            Console.WriteLine("Green is the winner!");
+            return true;
+        }
+
+        count = 0;
+        for (int i = 9; i >= 6; i--)
+        {
+            if (_board[i, 5] == yellow.Symbol)
+            {
+                count++;
+            }
+        }
+        if (count == 4)
+        {
+            Console.WriteLine("Blue is the winner!");
+            return true;
+        }
+
+        count = 0;
+        for (int i = 9; i >= 6; i--)
+        {
+            if (_board[5, i] == yellow.Symbol)
+            {
+                count++;
+            }
+        }
+        if (count == 4)
+        {
+            Console.WriteLine("Red is the winner!");
+            return true;
+        }
         return false;
+    }
+
+    public void MakeMoves(int steps, string player)
+    {
+        Piece curPiece;
+        switch (player)
+        {
+            case "Yellow":
+                curPiece = yellow;
+                break;
+            case "Green":
+                curPiece = green;
+                break;
+            case "Red":
+                curPiece = red;
+                break;
+            case "Blue":
+                curPiece = blue;
+                break;
+        }
+        
     }
 }

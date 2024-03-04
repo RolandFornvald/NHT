@@ -28,9 +28,4 @@ public class Piece
 
         return false;
     }
-    
-    public bool Move(int steps)
-    {
-        return false;
-    }
 }
